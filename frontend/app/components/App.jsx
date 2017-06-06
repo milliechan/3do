@@ -1,9 +1,11 @@
 import React from 'react'
+import PostForm from 'PostForm'
 
 const App = () => (
   <div>
     <h1>Post Todos</h1>
-    <div>Post Form</div>
+    <PostForm />
+    <div>Post List</div>
   </div>
 )
 
