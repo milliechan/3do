@@ -1,9 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-
-const element = <div>hello world</div>
+import App from 'app'
 
 ReactDOM.render(
-  element,
+  <App />,
   document.getElementById('root')
 )
