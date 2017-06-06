@@ -15,7 +15,7 @@ module.exports = {
     filename: "bundle.js",
     // the filename tempalte for entry chunks
 
-    publicPath: "/assets/",
+    publicPath: "/",
     // the url to the output directory resolved relative to the HTML page
   },
 
@@ -54,7 +54,7 @@ module.exports = {
     ],
     // directories where to look for modules
 
-    extensions: [".js", ".json", ".jsx", ".css"]
+    extensions: [".js", ".jsx"]
     //extensions that are used
   }
 }
