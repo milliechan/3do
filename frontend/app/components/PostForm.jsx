@@ -12,6 +12,7 @@ class PostForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     this.props.createPost(this.state.title)
+    this.setState({ title: '' })
   }
 
   handleChange(e) {

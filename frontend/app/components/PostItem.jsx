@@ -1,9 +1,10 @@
 import React from 'react'
+import deletePost from 'mutations/deletePost'
 
 const PostItem = (props) => {
   return (
-    <li>{ props.post.title }</li>
+    <li><button onClick={ () => props.deletePost(props.post.id) }>Done</button> { props.post.title }</li>
   )
 }
 
-export default PostItem
+export default deletePost(PostItem)
