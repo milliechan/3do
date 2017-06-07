@@ -1,9 +1,15 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import App from 'App'
+import { createStore } from 'redux'
+import highlightTitle from './reducers'
+import { Provider } from 'react-redux'
 
-const element = <div>hello world</div>
+let store = createStore(highlightTitle)
 
 ReactDOM.render(
-  element,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 )
