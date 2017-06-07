@@ -1,7 +1,9 @@
 import React from 'react'
 
-const PostItem = () => (
-  <div>Post Todo 1</div>
-)
+const PostItem = (props) => {
+  return (
+    <li>{ props.post.title }</li>
+  )
+}
 
 export default PostItem

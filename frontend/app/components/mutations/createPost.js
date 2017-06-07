@@ -17,8 +17,7 @@ const createPost = graphql(createPostMutation, {
     createPost: (title) => mutate({
       variables: { title },
       refetchQueries: [{
-        query: loadPostsQuery,
-        variables: { title: '' }
+        query: loadPostsQuery
       }]
     })
   })

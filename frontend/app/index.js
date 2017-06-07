@@ -7,11 +7,13 @@ import { Provider } from 'react-redux'
 import client from './apolloClient'
 import { ApolloProvider } from 'react-apollo'
 
+const reducers = combineReducers({
+  highlightTitle,
+  apollo: client.reducer()
+})
+
 const store = createStore(
-  combineReducers({
-    highlightTitle,
-    apollo: client.reducer()
-  }),
+  reducers,
   {}, // initial state
   compose(
     applyMiddleware(client.middleware()),
@@ -23,7 +25,7 @@ const store = createStore(
 
 
 ReactDOM.render(
-  <ApolloProvider client={client} store={store}>
+  <ApolloProvider client={ client } store={ store }>
       <App />
   </ApolloProvider>,
   document.getElementById('root')
