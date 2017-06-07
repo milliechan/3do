@@ -13,8 +13,7 @@ Types::QueryType = GraphQL::ObjectType.define do
 
   field :posts do
     type types[Types::PostType]
-    argument :title, !types.String
-    description "Find all posts"
+    argument :title, types.String
     resolve ->(obj, args, ctx) do
       if args[:title].present?
         return Post.where(title: args[:title])
