@@ -10,25 +10,37 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 const mapStateToProps = (state)=> {
-  console.log(state)
   return {
-    showingHighlight: state.show
+    showingHighlight: state.highlightTitle.show
   }
 }
 
+const withHighlightControls = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)
+
 class App extends React.Component {
+  constructor(props) {
+    super(props)
+    this.handleSearch = this.handleSearch.bind(this)
+    this.state = { searchTitle: '' }
+  }
+
+  handleSearch(e) {
+    this.setState({ searchTitle: e.target.value })
+  }
   render() {
     return (
       <div>
         <h1 style={ this.props.showingHighlight && { background: 'yellow' } || null } onClick={ this.props.showingHighlight ? this.props.removeHighlight : this.props.addHighlight }>Post Todos</h1>
+        <label>Search: <input value={ this.state.searchTitle } onChange={ this.handleSearch }/></label>
         <PostForm />
-        <PostList />
+        <PostList title={ this.state.searchTitle } />
       </div>
     )
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App)
+
+export default withHighlightControls(App)

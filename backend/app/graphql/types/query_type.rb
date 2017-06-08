@@ -5,9 +5,20 @@ Types::QueryType = GraphQL::ObjectType.define do
   # They will be entry points for queries on your schema.
 
   field :post do
-    type Type::PostType
+    type Types::PostType
     argument :id, !types.ID
     description "Find a Post by ID"
     resolve ->(obj, args, ctx) { Post.find(args[:id]) }
+  end
+
+  field :posts do
+    type types[Types::PostType]
+    argument :title, types.String
+    resolve ->(obj, args, ctx) do
+      if args[:title].present?
+        return Post.where("title like ?", '%' + args[:title] + '%' )
+      end
+      Post.all
+    end
   end
 end
