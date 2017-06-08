@@ -10,7 +10,10 @@ const PostList = (props) => {
     <div>
       <h3>Post List</h3>
       <ul>
-        { props.data.posts && props.data.posts.map((post) => <PostItem key={ post.id } post={ post }/>) }
+        { props.data.posts
+          && props.data.posts.map((post, index) =>
+          <PostItem key={ post.id } post={ post }/>)
+        }
       </ul>
     </div>
   )
