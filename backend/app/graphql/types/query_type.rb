@@ -16,7 +16,6 @@ Types::QueryType = GraphQL::ObjectType.define do
     argument :title, types.String
     resolve ->(obj, args, ctx) do
       if args[:title].present?
-        # return Post.where(title: args[:title])
         return Post.where("title like ?", '%' + args[:title] + '%' )
       end
       Post.all
